@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "Welcome")
 public class WelcomeCtl {
 
-	/*
-	 * @GetMapping public String display() {
-	 * System.out.println("in welcome do get...!!!"); return "Welcome"; }
-	 */
-
 	@GetMapping
-	public String display(Model model) {
-		model.addAttribute("msg", "Welcome to Spring MVC..!!");
+	public String display() {
 		return "Welcome";
 	}
+
+	/*
+	 * @GetMapping public String display(Model model) { model.addAttribute("msg",
+	 * "Welcome to Spring MVC..!!"); return "Welcome"; }
+	 */
 
 }

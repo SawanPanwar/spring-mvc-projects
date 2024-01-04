@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello Spring MVC ... !!!</h1>
-	<h1>${ msg }</h1>
+	<%@ include file="Header.jsp"%>
+	<h1>Welcome to Spring MVC ...!!!</h1>
 </body>
 </html>
