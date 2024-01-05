@@ -12,25 +12,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%
-		UserDTO user = (UserDTO) session.getAttribute("user");
-	%>
-
-	<%
-		if (user != null) {
-	%>
-	<h3>
-		Hii,
-		<%=user.getFirstName()%></h3>
-	<a href="User">Add User</a>
-	<%
-		} else {
-	%>
-	<h3>Hii, Guest</h3>
-	<%
-		}
-	%>
+	<c:if test="${not empty sessionScope.user}">
+		<h3>
+			Hii,
+			<c:out value="${sessionScope.user.firstName}"></c:out>
+			<a href="<c:url value="/User"/>">Add User</a> <a
+				href="<c:url value="/User/search"/>">User List</a>
+		</h3>
+	</c:if>
+	<c:if test="${empty sessionScope.user}">
+		<h3>Hii, Guest</h3>
+	</c:if>
 	<hr>
 </body>
 </html>
