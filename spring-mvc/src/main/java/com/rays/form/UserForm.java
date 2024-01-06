@@ -26,6 +26,8 @@ public class UserForm {
 	@NotEmpty
 	private String address;
 
+	private int pageNo;
+
 	public long getId() {
 		return id;
 	}
@@ -88,6 +90,14 @@ public class UserForm {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
 	}
 
 }

@@ -24,7 +24,12 @@ public class LoginCtl {
 	public UserServiceImpl service;
 
 	@GetMapping
-	public String display(@ModelAttribute("form") LoginForm form) {
+	public String display(@ModelAttribute("form") LoginForm form, @RequestParam(required = false) String operation,
+			HttpSession session) {
+
+		if (operation != null && operation.equals("logout")) {
+			session.invalidate();
+		}
 		return "LoginView";
 	}
 

@@ -21,7 +21,7 @@ import com.rays.service.UserServiceImpl;
 import com.rays.util.DataUtility;
 
 @Controller
-@RequestMapping(value = "User")
+@RequestMapping(value = "/ctl/User")
 public class UserCtl {
 
 	@Autowired
@@ -77,7 +77,12 @@ public class UserCtl {
 	@GetMapping("search")
 	public String display(@ModelAttribute("form") UserForm form, Model model) {
 
-		List list = service.search(null, 1, 5);
+		int pageNo = 1;
+		int pageSize = 5;
+
+		List list = service.search(null, pageNo, pageSize);
+
+		form.setPageNo(pageNo);
 
 		model.addAttribute("list", list);
 
@@ -91,6 +96,25 @@ public class UserCtl {
 
 		UserDTO dto = null;
 
+		int pageNo = 1;
+		int pageSize = 5;
+
+		if (operation.equals("next")) {
+
+			pageNo = form.getPageNo();
+
+			pageNo++;
+
+		}
+
+		if (operation.equals("previous")) {
+
+			pageNo = form.getPageNo();
+
+			pageNo--;
+
+		}
+
 		if (operation.equals("search")) {
 
 			dto = new UserDTO();
@@ -99,7 +123,8 @@ public class UserCtl {
 
 			dto.setFirstName(form.getFirstName());
 
-		}if (operation.equals("delete")) {
+		}
+		if (operation.equals("delete")) {
 			if (form.getIds() != null && form.getIds().length > 0) {
 				for (long id : form.getIds()) {
 					service.delete(id);
@@ -107,7 +132,9 @@ public class UserCtl {
 			}
 		}
 
-		List list = service.search(dto, 1, 5);
+		form.setPageNo(pageNo);
+
+		List list = service.search(dto, pageNo, pageSize);
 
 		model.addAttribute("list", list);
 
