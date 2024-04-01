@@ -1,3 +1,4 @@
+<%@page import="com.rays.dto.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false"%>
@@ -11,9 +12,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="Header.jsp"%>
-	<h1>Welcome to Spring MVC ...!!!</h1>
-	<h1>${msg}</h1>
-	<%@ include file="Footer.jsp"%>
+	<c:if test="${not empty sessionScope.user}">
+		<h3>
+			Hii,
+			<c:out value="${sessionScope.user.firstName}"></c:out>
+			<a href="<c:url value="/ctl/User"/>">Add User</a> <a
+				href="<c:url value="/ctl/User/search"/>">User List</a> <a
+				href="<c:url value="/Login?operation=logout"/>">Logout</a>
+		</h3>
+	</c:if>
+	<c:if test="${empty sessionScope.user}">
+		<h3>Hii, Guest</h3>
+	</c:if>
+	<hr>
 </body>
 </html>
