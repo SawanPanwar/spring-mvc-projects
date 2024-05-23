@@ -26,7 +26,7 @@
 				</td>
 			</tr>
 		</table>
-		<table border="1">
+		<table style="width: 100%" border="1">
 			<tr>
 				<th>Select</th>
 				<th>ID</th>
@@ -40,20 +40,23 @@
 			</tr>
 			<c:forEach items="${list}" var="user">
 				<tr>
-					<td><sf:checkbox path="ids" value="${user.id}" /></td>
-					<td><c:out value="${user.id }"></c:out></td>
-					<td><c:out value="${user.firstName }"></c:out></td>
-					<td><c:out value="${user.lastName }"></c:out></td>
-					<td><c:out value="${user.login }"></c:out></td>
-					<td><c:out value="${user.password }"></c:out></td>
-					<td><c:out value="${user.dob }"></c:out></td>
-					<td><c:out value="${user.address }"></c:out></td>
-					<td><a href="<c:url value="/User?id=${user.id}" />">edit</a></td>
+					<td align="center"><sf:checkbox path="ids" value="${user.id}" /></td>
+					<td align="center"><c:out value="${user.id }"></c:out></td>
+					<td align="center"><c:out value="${user.firstName }"></c:out></td>
+					<td align="center"><c:out value="${user.lastName }"></c:out></td>
+					<td align="center"><c:out value="${user.login }"></c:out></td>
+					<td align="center"><c:out value="${user.password }"></c:out></td>
+					<td align="center"><c:out value="${user.dob }"></c:out></td>
+					<td align="center"><c:out value="${user.address }"></c:out></td>
+					<td align="center"><a
+						href="<c:url value="/User?id=${user.id}" />">edit</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 		<table>
 			<tr>
+				<td><input type="submit" name="operation" value="previous"
+					${form.pageNo == 1 ? 'disabled="disabled"' : ''} /></td>
 				<td><input type="submit" name="operation" value="delete">
 				<td><input type="submit" name="operation" value="next">
 				</td>

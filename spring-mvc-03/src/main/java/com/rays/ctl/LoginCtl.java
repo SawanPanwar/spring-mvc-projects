@@ -27,6 +27,7 @@ public class LoginCtl {
 
 		if (operation != null && operation.equals("logout")) {
 			session.invalidate();
+			return "redirect:Login";
 		}
 
 		return "LoginView";

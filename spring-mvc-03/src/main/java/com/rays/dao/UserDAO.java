@@ -81,7 +81,7 @@ public class UserDAO {
 			}
 		}
 		if (pageSize > 0) {
-			pageNo = pageNo - 1 * pageSize;
+			pageNo = (pageNo - 1) * pageSize;
 			criteria.setFirstResult(pageNo);
 			criteria.setMaxResults(pageSize);
 		}
