@@ -16,8 +16,8 @@
 		<h3>
 			Hii,
 			<c:out value="${sessionScope.user.firstName}"></c:out>
-			<a href="<c:url value="/User"/>">Add User</a> | <a
-				href="<c:url value="/User/search"/>">User List</a> | <a
+			<a href="<c:url value="/ctl/User"/>">Add User</a> | <a
+				href="<c:url value="/ctl/User/search"/>">User List</a> | <a
 				href="<c:url value="/Login?operation=logout"/>">Logout</a>
 		</h3>
 	</c:if>

@@ -19,7 +19,7 @@ import com.rays.service.UserService;
 import com.rays.util.DataUtility;
 
 @Controller
-@RequestMapping(value = "User")
+@RequestMapping(value = "/ctl/User")
 public class UserCtl {
 
 	@Autowired

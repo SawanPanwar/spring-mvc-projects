@@ -13,10 +13,20 @@
 
 	<import resource="hibernate-servlet.xml" />
 
+	<mvc:annotation-driven />
+
 	<bean id="ViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/ctl/**" />
+			<mvc:exclude-mapping path="/Login" />
+			<bean class="com.rays.ctl.FrontCtl"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>
