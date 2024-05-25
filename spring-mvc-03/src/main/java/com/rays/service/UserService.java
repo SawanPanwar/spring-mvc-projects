@@ -65,5 +65,4 @@ public class UserService {
 		List list = dao.search(dto, pageNo, pageSize);
 		return list;
 	}
-
 }
