@@ -1,13 +1,16 @@
 package com.rays.form;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class LoginForm {
 
-	@NotEmpty
+	@NotEmpty(message = "login is required")
+	@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Invalid email address")
 	private String login;
 
-	@NotEmpty
+	@NotEmpty(message = "password is required")
 	private String password;
 
 	public String getLogin() {

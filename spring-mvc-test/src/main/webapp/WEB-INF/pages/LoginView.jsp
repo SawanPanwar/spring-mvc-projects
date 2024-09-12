@@ -22,10 +22,12 @@
 				<tr>
 					<th align="left">Login ID :</th>
 					<td><sf:input path="login" /></td>
+					<td><sf:errors path="login"></sf:errors></td>
 				</tr>
 				<tr>
 					<th align="left">Password :</th>
 					<td><sf:input path="password" /></td>
+					<td><sf:errors path="password"></sf:errors></td>
 				</tr>
 				<tr>
 					<th></th>
