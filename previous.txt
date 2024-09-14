@@ -1,3 +1,0 @@
-<td>
-   <input type="submit" name="operation" value="previous" ${form.pageNo == 1 ? 'disabled="disabled"' : ''} />
-</td>
