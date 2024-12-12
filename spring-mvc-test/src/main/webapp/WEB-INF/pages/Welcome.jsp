@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="Header.jsp"%>
 	<div align="center">
 		<h1>Welcome to spring-mvc-test</h1>
 		<h3>${msg}</h3>
