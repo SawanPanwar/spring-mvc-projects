@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rays.dto.UserDTO;
 import com.rays.form.LoginForm;
@@ -21,7 +22,14 @@ public class LoginCtl {
 	public UserService service;
 
 	@GetMapping
-	public String display(@ModelAttribute("form") LoginForm form) {
+	public String display(@ModelAttribute("form") LoginForm form, @RequestParam(required = false) String operation,
+			HttpSession session) {
+
+		if (operation != null && operation.equals("logout")) {
+			session.invalidate();
+			return "redirect:Login";
+		}
+
 		return "LoginView";
 	}
 
