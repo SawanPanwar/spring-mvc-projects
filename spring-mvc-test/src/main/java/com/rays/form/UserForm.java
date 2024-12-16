@@ -4,6 +4,8 @@ public class UserForm {
 
 	protected long id = 0;
 
+	private Long[] ids;
+
 	private String firstName;
 
 	private String lastName;
@@ -16,12 +18,22 @@ public class UserForm {
 
 	private String address;
 
+	private int pageNo;
+
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Long[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Long[] ids) {
+		this.ids = ids;
 	}
 
 	public String getFirstName() {
@@ -70,5 +82,13 @@ public class UserForm {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
 	}
 }

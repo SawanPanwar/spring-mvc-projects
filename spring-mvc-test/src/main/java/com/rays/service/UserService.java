@@ -62,6 +62,7 @@ public class UserService {
 	}
 
 	public List search(UserDTO dto, int pageNo, int pageSize) {
+		System.out.println("search 4");
 		List list = dao.search(dto, pageNo, pageSize);
 		return list;
 	}

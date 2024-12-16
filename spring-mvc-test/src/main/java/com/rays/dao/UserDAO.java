@@ -67,6 +67,7 @@ public class UserDAO {
 	}
 
 	public List search(UserDTO dto, int pageNo, int pageSize) {
+		System.out.println("search 5");
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(UserDTO.class);
 		if (dto != null) {
@@ -81,10 +82,12 @@ public class UserDAO {
 			}
 		}
 		if (pageSize > 0) {
+			System.out.println("search 6");
 			pageNo = (pageNo - 1) * pageSize;
 			criteria.setFirstResult(pageNo);
 			criteria.setMaxResults(pageSize);
 		}
+		System.out.println("search 7");
 		List list = criteria.list();
 		return list;
 	}
