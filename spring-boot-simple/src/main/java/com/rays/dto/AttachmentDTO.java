@@ -77,15 +77,15 @@ public class AttachmentDTO extends BaseDTO {
 		this.userId = userId;
 	}
 
-	public String getValue() {
-		return null;
-	}
-
 	public byte[] getDoc() {
 		return doc;
 	}
 
 	public void setDoc(byte[] doc) {
 		this.doc = doc;
+	}
+
+	public String getValue() {
+		return null;
 	}
 }
