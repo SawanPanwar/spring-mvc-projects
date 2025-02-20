@@ -10,16 +10,8 @@
 	<%@ include file="Header.jsp"%>
 	<sf:form method="post" modelAttribute="form">
 		<div align="center">
-			<h1 style="color: navy">User Registration</h1>
+			<h1 style="color: navy">Login</h1>
 			<table>
-				<tr>
-					<th align="left">First Name :</th>
-					<td><sf:input path="firstName" /></td>
-				</tr>
-				<tr>
-					<th align="left">Last Name :</th>
-					<td><sf:input path="lastName" /></td>
-				</tr>
 				<tr>
 					<th align="left">Login ID :</th>
 					<td><sf:input path="login" /></td>
@@ -29,16 +21,9 @@
 					<td><sf:input path="password" /></td>
 				</tr>
 				<tr>
-					<th align="left">Date Of Birth :</th>
-					<td><sf:input path="dob" /></td>
-				</tr>
-				<tr>
-					<th align="left">Address :</th>
-					<td><sf:input path="address" /></td>
-				</tr>
-				<tr>
 					<th></th>
-					<td><input type="submit" name="operation" value="signUp"></td>
+					<td><input type="submit" name="operation" value="signIn">
+						<input type="submit" name="operation" value="signUp"></td>
 				</tr>
 			</table>
 		</div>
