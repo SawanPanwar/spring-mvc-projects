@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.rays.dto.UserDTO;
 import com.rays.form.UserForm;
 import com.rays.service.UserService;
+import com.rays.util.DataUtility;
 
 @Controller
 @RequestMapping(value = "User")
@@ -21,6 +22,48 @@ public class UserCtl {
 
 	@Autowired
 	public UserService service;
+
+	@ModelAttribute("form")
+	public void preload(Model model) {
+		List list = service.search(null, 0, 0);
+		model.addAttribute("userList", list);
+	}
+
+	@GetMapping
+	public String display(@ModelAttribute("form") UserForm form, @RequestParam(required = false) Long id) {
+
+		if (id != null && id > 0) {
+			UserDTO dto = service.findByPk(id);
+			form.setId(dto.getId());
+			form.setFirstName(dto.getFirstName());
+			form.setLastName(dto.getLastName());
+			form.setLogin(dto.getLogin());
+			form.setPassword(dto.getPassword());
+			form.setDob(DataUtility.dateToString(dto.getDob()));
+			form.setAddress(dto.getAddress());
+		}
+		return "UserView";
+	}
+
+	@PostMapping
+	public String submit(@ModelAttribute("form") UserForm form) {
+
+		UserDTO dto = new UserDTO();
+		dto.setId(form.getId());
+		dto.setFirstName(form.getFirstName());
+		dto.setLastName(form.getLastName());
+		dto.setLogin(form.getLogin());
+		dto.setPassword(form.getPassword());
+		dto.setDob(DataUtility.stringToDate(form.getDob()));
+		dto.setAddress(form.getAddress());
+
+		if (form.getId() > 0) {
+			service.update(dto);
+		} else {
+			service.add(dto);
+		}
+		return "UserView";
+	}
 
 	@GetMapping("search")
 	public String display(@ModelAttribute("form") UserForm form, Model model) {
@@ -55,12 +98,13 @@ public class UserCtl {
 			pageNo = form.getPageNo();
 			pageNo--;
 		}
-		
+
 		if (operation.equals("search")) {
 			dto = new UserDTO();
+			dto.setId(form.getId());
 			dto.setFirstName(form.getFirstName());
 		}
-		
+
 		if (operation.equals("delete")) {
 			if (form.getIds() != null && form.getIds().length > 0) {
 				for (long id : form.getIds()) {

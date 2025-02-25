@@ -13,6 +13,11 @@
 		<table>
 			<tr>
 				<td><sf:input path="firstName" />&nbsp; &nbsp;</td>
+				<td><sf:select path="id">
+						<sf:option value="0">-----------select------------</sf:option>
+						<sf:options items="${userList}" itemValue="id"
+							itemLabel="firstName" />
+					</sf:select>&nbsp; &nbsp;</td>
 				<td><input type="submit" name="operation" value="search">
 				</td>
 			</tr>
@@ -39,7 +44,8 @@
 					<td align="center"><c:out value="${user.password }"></c:out></td>
 					<td align="center"><c:out value="${user.dob }"></c:out></td>
 					<td align="center"><c:out value="${user.address }"></c:out></td>
-					<td align="center"><a href="<c:url value="/User" />">edit</a></td>
+					<td align="center"><a
+						href="<c:url value="/User?id=${user.id}" />">edit</a></td>
 				</tr>
 			</c:forEach>
 		</table>
